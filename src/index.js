@@ -1,1 +1,2 @@
-console.log('Hello World');
+// LINKED LIST
+import './linked-list/index.js';

@@ -1,47 +1,48 @@
 module.exports = {
-  env: {
-    node: true,
-    es6: true,
+  "env": {
+    "browser": true,
+    "es2021": true
   },
-  extends: 'eslint:recommended',
-  parserOptions: {
-    ecmaVersion: 2018,
+  "overrides": [
+    {
+      "env": {
+        "node": true
+      },
+      "files": [
+        ".eslintrc.{js,cjs}"
+      ],
+      "parserOptions": {
+        "sourceType": "script"
+      }
+    }
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  rules: {
+  "rules": {
     // Basic Stylistic Rules
-    'indent': ['error', 2],
-    'quotes': ['error', 'single'],
-    'semi': ['error', 'always'],
-    'comma-dangle': ['error', 'always-multiline'],
-    'no-unused-vars': 'error',
+    'indent': ['error', 2],        // Use 2 spaces for indentation
+    'quotes': ['error', 'single'], // Use single quotes
+    'semi': ['error', 'always'],   // Require semicolons at the end of statements
+    'comma-dangle': ['error', 'always-multiline'], // Require trailing commas in multiline object literals
 
     // Best Practices
-    'eqeqeq': 'error',
-    'no-console': 'warn',
-    'no-eval': 'error',
+    'eqeqeq': 'error',             // Require === and !==
+    'no-console': 'warn',          // Warn about console.log and similar statements
+    'no-eval': 'error',            // Avoid using eval()
 
     // Variables
-    'no-shadow': 'error',
-    'no-var': 'error',
-    'no-unused-vars': ['error', { 'vars': 'all', 'args': 'after-used', 'ignoreRestSiblings': false }],
+    'no-unused-vars': 'error',     // Disallow unused variables
+    'no-undef': 'error',           // Disallow the use of undeclared variables
 
     // Functions
-    'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
-    'arrow-parens': ['error', 'always'],
+    'func-style': ['error', 'declaration', { allowArrowFunctions: true }], // Use function declarations or arrow functions, but not expressions
+    'arrow-parens': ['error', 'always'], // Require parentheses around arrow function parameters
 
     // ES6+ Features
-    'prefer-const': 'error',
-    'prefer-arrow-callback': 'error',
-    'template-curly-spacing': ['error', 'always'],
-  },
-  overrides: [
-    {
-      files: ['src/**/*.js'], // Set the path for your JavaScript files in the src folder
-      rules: {
-        // Additional rules specific to files in the src folder
-        // For example:
-        'no-console': 'off',
-      },
-    },
-  ],
-};
+    'prefer-const': 'error',       // Use const for variables that don't need to be reassigned
+    'prefer-arrow-callback': 'error', // Use arrow functions for callbacks
+    'template-curly-spacing': ['error', 'always'], // Enforce consistent spacing inside template literals
+  }
+}
