@@ -1,3 +1,11 @@
+/*
+  LINK: 
+  - https://leetcode.com/problems/implement-queue-using-stacks/
+
+  PROBLEM STATEMENT: 
+  - Implement Queue using Stacks
+*/
+
 class QueueUsingStacks {
   stack1;
   stack2;
