@@ -12,7 +12,7 @@ class LinkedList {
     this.length = 0;
   }
 
-  // unshift
+  // Insert a node at the beginnning
   unshift(data) {
     const newNode = new ListNode(data);
 
@@ -28,7 +28,7 @@ class LinkedList {
     return true;
   }
 
-  // push
+  // Insert a node to the end
   push(data) {
     const newNode = new ListNode(data);
 
@@ -44,6 +44,7 @@ class LinkedList {
     return true;
   }
 
+  // Remove a node from the end
   pop() {
     if (!this.head || !this.tail) return undefined;
 
@@ -71,6 +72,7 @@ class LinkedList {
     return current;
   }
 
+  // Remove a node from the beginnning
   shift() {
     if (!this.head  || !this.tail) return undefined;
 
@@ -90,6 +92,38 @@ class LinkedList {
 
     return temp;
   }
+
+  // Return node at a particular index 'index'
+  get(index) {
+    if (index < 0 || index >= this.length) throw new Error('Index provided is out of range');
+    if (index === 0) return this.head;
+
+    let currentIndex = 0;
+    let current = this.head;
+
+    while (current && currentIndex !== index) {
+      current = current.next;
+      currentIndex = currentIndex + 1;
+    }
+
+    return current;
+  }
+
+  // Print the linked list
+  print() {
+    let listString = "";
+
+    let current = this.head;
+
+    while (current) {
+      listString += `${current.data} -> `;
+      current = current.next;
+    }
+
+    listString += "NULL";
+
+    return listString;
+  }
 }
 
 
@@ -103,12 +137,10 @@ function main() {
   list.unshift(100);
   list.unshift(200);
 
-  console.log("POPPED", list.pop());
-  console.log("POPPED", list.pop());
+  console.log(list.get(0));
+  console.log(list.get(4));
 
-  console.log("SHIFT:", list.shift());
-
-  console.log(list);
+  console.log(list.print());
 }
 
 main();
