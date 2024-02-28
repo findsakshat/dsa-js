@@ -124,6 +124,24 @@ class LinkedList {
 
     return listString;
   }
+
+  isCircular() {
+    if (!this.head) return false;
+
+    let fastPointer = this.head;
+    let slowPointer = this.head;
+
+    while (fastPointer && fastPointer.next) {
+      slowPointer = slowPointer.next;
+      fastPointer = fastPointer.next.next;
+
+      if (fastPointer === slowPointer) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 
@@ -140,7 +158,9 @@ function main() {
   console.log(list.get(0));
   console.log(list.get(4));
 
-  console.log(list.print());
+  console.log(list.print()); // 200 -> 100 -> 10 -> 20 -> 30 -> NULL
+
+  console.log(list.isCircular()); // false
 }
 
 main();
