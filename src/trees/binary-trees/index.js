@@ -93,7 +93,6 @@ class BinaryTree {
 
     return visitedNodes;
   }
-
 }
 
 function main() {
