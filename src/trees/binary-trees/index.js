@@ -66,6 +66,34 @@ class BinaryTree {
     return visitedNodes;
   }
 
+  BFSLevelWise() {
+    const visitedNodes = [];
+
+    const queue = [this.root];
+
+    while (queue.length) {
+      const levelSize = queue.length;
+      const currentLevel = [];
+
+      for (let i = 0; i < levelSize; i++) {
+        const currentNode = queue.shift();
+        currentLevel.push(currentNode.data);
+
+        if (currentNode.left) {
+          queue.push(currentNode.left);
+        }
+
+        if (currentNode.right) {
+          queue.push(currentNode.right);
+        }
+      }
+
+      visitedNodes.push(currentLevel);
+    }
+
+    return visitedNodes;
+  }
+
 }
 
 function main() {
@@ -80,6 +108,7 @@ function main() {
   tree.insert(8);
 
   console.log(tree.BFS());
+  console.log(tree.BFSLevelWise());
 }
 
 main();

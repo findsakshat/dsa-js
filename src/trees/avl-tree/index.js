@@ -26,6 +26,10 @@ class AVLTree {
     return Math.max(leftHeight, rightHeight) + 1;
   }
 
+  balancingFactor(node) {
+    return node ? this.getHeight(node.left) - this.getHeight(node.right) : 0;
+  }
+
   insert(data) {
     const newNode = new AVLNode(data);
 
@@ -70,6 +74,7 @@ function main() {
   console.log(avl);
 
   console.log(avl.getHeight(avl.root));
+  console.log(avl.balancingFactor(avl.root));
 }
 
 main();
