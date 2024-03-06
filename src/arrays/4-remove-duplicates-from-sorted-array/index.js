@@ -1,9 +1,17 @@
 
-// BRUTE FORCE
+// BRUTE FORCE SOLUTION
+// - make use of set
+// - create a new array that stores all the unique elements
 
 function removeDuplicates(nums = []) {
   return new Set(nums);
 }
+
+// OPTIMAL SOLUTION
+// - keep a pointer at j = 0
+// - check if the upcoming item is equal or not
+//    - if it is not equal then it should take the next position j + 1 in the given array
+//    - also increment the j pointer
 
 function removeDuplicatesOptimal(nums = []) {
   let j = 0;
