@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/rearrange-array-elements-by-sign/description/
 
 // BRUTE FORCE
+
 function rearrangeBrute(nums = []) {
   const positives = [];
   const negatives = [];
@@ -33,6 +34,7 @@ function rearrangeBrute(nums = []) {
 }
 
 // BETTER SOLUTION
+
 function rearrangeBetter(nums = []) {
   const positives = [];
   const negatives = [];
@@ -61,10 +63,38 @@ function rearrangeBetter(nums = []) {
   return result;
 }
 
+// OPTIMAL SOLUTION
+
+// We cannot optimize on the space (as we need a result array)
+// But we can optimize on the pass we can do it in one pass 
+
+function rearrangeOptimal(nums = []) {
+  let positiveIndex = 0;
+  let negativeIndex = 1;
+
+  let result = [];
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < 0) {
+      // negative element
+      result[negativeIndex] = nums[i];
+      negativeIndex = negativeIndex + 2; // move to next negative index
+    } else {
+      // positive element
+      result[positiveIndex] = nums[i];
+      positiveIndex = positiveIndex + 2; // move to next positive index
+    }
+  }
+
+  return result;
+} 
+
 function main() {
   console.log(rearrangeBrute([3, 1, -2, -5, 2, -4]));
-
   console.log(rearrangeBetter([3, 1, -2, -5, 2, -4]));
+
+  console.log(rearrangeOptimal([-1, 1]));
+  console.log(rearrangeOptimal([3, 1, -2, -5, 2, -4]));
 }
 
 main();
