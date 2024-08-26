@@ -38,8 +38,8 @@ function calculatePoints(operations = []) {
 }
 
 function main() {
-  console.log(calculatePoints(["5","2","C","D","+"]));
-  console.log(calculatePoints(["5","-2","4","C","D","9","+","+"]))
+  console.log(calculatePoints(["5", "2", "C", "D", "+"]));
+  console.log(calculatePoints(["5", "-2", "4", "C", "D", "9", "+", "+"]));
 }
 
 main();
